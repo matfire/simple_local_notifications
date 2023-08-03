@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+channel: "com.matteogassend/simple_local_notifications";
+
+constant {
+    
+}

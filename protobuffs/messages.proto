@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option java_package = "com.matteogassend.simple_local_notifications";
+
+message Notification {
+    string channel_id = 1;
+    string channel_name = 2;
+    string message_title = 3;
+    string message_body = 4;
+}
