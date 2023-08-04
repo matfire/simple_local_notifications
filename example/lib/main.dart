@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:simple_local_notifications/models/notification.dart';
 import 'package:simple_local_notifications/simple_local_notifications.dart';
@@ -18,36 +17,23 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
   final _simpleLocalNotificationsPlugin = SimpleLocalNotifications();
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
+    initApplication();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
+  Future<void> initApplication() async {
     try {
-      platformVersion =
-          await _simpleLocalNotificationsPlugin.getPlatformVersion() ??
-              'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
+      await _simpleLocalNotificationsPlugin.createNotificationChannel(
+          channelId: "simple_local_notifications_channel_priority",
+          channelName: "simple_local_notifications_priority",
+          priority: SLNotificationPriority.high);
+    } catch (e) {
+      print(e.toString());
     }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
   }
 
   @override
@@ -60,18 +46,33 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: Column(
             children: [
-              Text('Running on: $_platformVersion\n'),
               TextButton(
-                  onPressed: () async {
-                    await Permission.notification.request();
-                    await _simpleLocalNotificationsPlugin
-                        .sendNotification(SLNotification(
-                      title: "Hello world",
-                      content: "from a flutter plugin",
-                      iconPath: "assets/icons/icon.png",
-                    ));
-                  },
-                  child: const Text("Send notification"))
+                onPressed: () async {
+                  await Permission.notification.request();
+                  await _simpleLocalNotificationsPlugin
+                      .sendNotification(SLNotification(
+                    title: "Hello world",
+                    content: "from a flutter plugin",
+                    iconPath: "assets/icons/icon.png",
+                  ));
+                },
+                child: const Text("Send notification"),
+              ),
+              TextButton(
+                onPressed: () async {
+                  await Permission.notification.request();
+                  await _simpleLocalNotificationsPlugin
+                      .sendNotification(SLNotification(
+                    title: "Hello world",
+                    content: "from a flutter plugin",
+                    iconPath: "assets/icons/icon.png",
+                    channelId: "simple_local_notifications_channel_priority",
+                    channelName: "simple_local_notifications_priority",
+                    priority: SLNotificationPriority.high,
+                  ));
+                },
+                child: const Text("Send HIGH notification"),
+              ),
             ],
           ),
         ),
