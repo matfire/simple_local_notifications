@@ -23,4 +23,17 @@ class MethodChannelSimpleLocalNotifications
     await methodChannel.invokeMethod(
         'sendNotification', await notification.toMap());
   }
+
+  @override
+  Future<void> createNotificationChannel(
+      {required String channelId,
+      required String channelName,
+      SLNotificationPriority priority =
+          SLNotificationPriority.defaultPriority}) async {
+    await methodChannel.invokeMethod('createNotificationChannel', {
+      "channelId": channelId,
+      "channelName": channelName,
+      "priority": SLNotification.priorityMap[priority]
+    });
+  }
 }

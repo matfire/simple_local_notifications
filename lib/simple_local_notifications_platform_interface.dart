@@ -32,4 +32,13 @@ abstract class SimpleLocalNotificationsPlatform extends PlatformInterface {
   Future<void> sendNotification(SLNotification notification) async {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
+
+  Future<void> createNotificationChannel(
+      {required String channelId,
+      required String channelName,
+      SLNotificationPriority priority =
+          SLNotificationPriority.defaultPriority}) async {
+    throw UnimplementedError(
+        'createNotificationChannel() has not been implemented.');
+  }
 }

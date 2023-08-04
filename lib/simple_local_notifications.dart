@@ -11,4 +11,13 @@ class SimpleLocalNotifications {
     return SimpleLocalNotificationsPlatform.instance
         .sendNotification(notification);
   }
+
+  Future<void> createNotificationChannel(
+      {required String channelId,
+      required String channelName,
+      SLNotificationPriority priority =
+          SLNotificationPriority.defaultPriority}) {
+    return SimpleLocalNotificationsPlatform.instance.createNotificationChannel(
+        channelId: channelId, channelName: channelName, priority: priority);
+  }
 }
