@@ -1,5 +1,6 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
+import 'models/notification.dart';
 import 'simple_local_notifications_method_channel.dart';
 
 abstract class SimpleLocalNotificationsPlatform extends PlatformInterface {
@@ -8,7 +9,8 @@ abstract class SimpleLocalNotificationsPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static SimpleLocalNotificationsPlatform _instance = MethodChannelSimpleLocalNotifications();
+  static SimpleLocalNotificationsPlatform _instance =
+      MethodChannelSimpleLocalNotifications();
 
   /// The default instance of [SimpleLocalNotificationsPlatform] to use.
   ///
@@ -24,6 +26,10 @@ abstract class SimpleLocalNotificationsPlatform extends PlatformInterface {
   }
 
   Future<String?> getPlatformVersion() {
+    throw UnimplementedError('platformVersion() has not been implemented.');
+  }
+
+  Future<void> sendNotification(SLNotification notification) async {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 }
