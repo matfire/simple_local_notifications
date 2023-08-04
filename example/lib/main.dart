@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:simple_local_notifications/models/notification.dart';
 import 'package:simple_local_notifications/simple_local_notifications.dart';
 
@@ -62,12 +63,15 @@ class _MyAppState extends State<MyApp> {
               Text('Running on: $_platformVersion\n'),
               TextButton(
                   onPressed: () async {
-                    await _simpleLocalNotificationsPlugin.sendNotification(
-                        SLNotification(
-                            title: "Hello world",
-                            content: "from a flutter plugin"));
+                    await Permission.notification.request();
+                    await _simpleLocalNotificationsPlugin
+                        .sendNotification(SLNotification(
+                      title: "Hello world",
+                      content: "from a flutter plugin",
+                      iconPath: "assets/icons/icon.png",
+                    ));
                   },
-                  child: Text("Send notification"))
+                  child: const Text("Send notification"))
             ],
           ),
         ),
