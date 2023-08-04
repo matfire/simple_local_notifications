@@ -1,6 +1,0 @@
-syntax = "proto2";
-
-message Contants {
-    required string channel_name = 1 [default="com.matteogassend/simple_local_notifications"];
-    required string send_notification = 2 [default="send_notification"];
-}
