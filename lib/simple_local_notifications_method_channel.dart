@@ -20,6 +20,7 @@ class MethodChannelSimpleLocalNotifications
 
   @override
   Future<void> sendNotification(SLNotification notification) async {
-    await methodChannel.invokeMethod('sendNotification', notification.toMap());
+    await methodChannel.invokeMethod(
+        'sendNotification', await notification.toMap());
   }
 }

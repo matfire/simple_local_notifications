@@ -1,25 +1,29 @@
+import 'package:flutter/services.dart';
+
 class SLNotification {
   String title;
   String content;
+  String iconPath;
   String? channelId;
   String? channelName;
 
   SLNotification(
       {required this.title,
       required this.content,
+      required this.iconPath,
       this.channelId,
       this.channelName}) {
-    channelId ??=
-        DateTime.now().millisecondsSinceEpoch.remainder(100000).toString();
+    channelId ??= "simple_local_notifications_channel";
     channelName ??= "simple_local_notifications";
   }
 
-  Map<String, dynamic> toMap() {
+  Future<Map<String, dynamic>> toMap() async {
     return {
       "title": title,
       "content": content,
       "channelId": channelId,
-      "channelName": channelName
+      "channelName": channelName,
+      "iconData": (await rootBundle.load(iconPath)).buffer.asUint8List(),
     };
   }
 }
