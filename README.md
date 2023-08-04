@@ -1,15 +1,28 @@
 # simple_local_notifications
 
-A new Flutter plugin project.
+A simple local notifications plugins; allows only to setup a title, icon and content.
+
+
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+### Android
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+If using android version >26, make sure the user has granted permission for notifications (check the [example project](/example/) for one way to check)
 
+### IOS
+
+Not yet developed
+
+### MacOS
+
+Not yet developed
+
+### Windows
+
+Not yet developed
+
+### Linux
+
+Not yet developed
