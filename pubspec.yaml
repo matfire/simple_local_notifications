@@ -22,7 +22,7 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
+repository: "https://github.com/matfire/simple_local_notifications"
 # The following section is specific to Flutter packages.
 flutter:
   # This section identifies this Flutter project as a plugin project.
@@ -40,13 +40,7 @@ flutter:
       android:
         package: com.matteogassend.simple_local_notifications
         pluginClass: SimpleLocalNotificationsPlugin
-      ios:
-        pluginClass: SimpleLocalNotificationsPlugin
-      macos:
-        pluginClass: SimpleLocalNotificationsPlugin
-      web:
-        pluginClass: SimpleLocalNotificationsWeb
-        fileName: simple_local_notifications_web.dart
+
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
