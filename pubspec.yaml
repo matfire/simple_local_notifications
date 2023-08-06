@@ -39,6 +39,8 @@ flutter:
       android:
         package: com.matteogassend.simple_local_notifications
         pluginClass: SimpleLocalNotificationsPlugin
+      ios:
+        pluginClass: SimpleLocalNotificationsPlugin
 
 
   # To add assets to your plugin package, add an assets section, like this:

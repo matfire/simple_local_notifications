@@ -13,7 +13,7 @@ If using android version >26, make sure the user has granted permission for noti
 
 ### IOS
 
-Not yet developed
+Make sure the correct permission are requested in your info.plist file (check the [example project](/example) for how to do so)
 
 ### MacOS
 
